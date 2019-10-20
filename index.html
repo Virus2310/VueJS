@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	
+<div id="app">
+	<input type="text" name="" v-on:input='changeName'>
+	<h1>String {{ name }}</h1>
+	<h1>Sum (10+60): {{ 10 + 60 }} </h1>
+	<h1> Number: {{ number }}</h1>
+	<h1>Method: {{ sayHello() }}</h1>
+	<h1>If statement: {{ isOk ? 'I am OK' : 'I am not Ok' }}</h1>
+	<h1> Functions: {{ string.split('').join('') }}</h1>
+
+
+
+
+</div>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+	new Vue({
+		el: '#app',
+		data: {
+			name: 'Vlad',
+			number: 100,
+			isOk: true,
+			string: 'My name is Vlad'
+		},
+		methods: {
+			sayHello: function() {
+				return 'I am function'
+			}
+		}
+	})
+	
+</script>
+</body>
+</html>
