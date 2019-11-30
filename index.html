@@ -6,7 +6,7 @@
 
 </head>
 <body>
-	
+
 <div id="app">
 
 	<h2>
@@ -17,25 +17,64 @@
 
 	<h2 v-on:mousemove='handleMouse'>	
 		X: {{ x }}, Y: {{ y }}
-
 		<span v-on:mousemove.stop=''>	No!!!</span>
 	</h2>
 
+	<h1>{{ sayHello() }}</h1>
+	<pre>{{ $data | json }}</pre>
 
+	<h1>
+		<a v-bind:href="url">Google</a>
+	</h1>
+
+	<h1>Counter: {{counter}}</h1>
+	<button @click='add1' >+1</button>
+	<button @click='count'>-1</button>
+
+	<h2 @mouseover='redHover'>Red</h2>
+
+	<h2>
+		<input type="text" @keyup.enter='addValue'>
+	</h2>
+
+	<h2>
+		<input type="text" @input= 'inputValue = $event.target.value'>
+		{{inputValue}}
+	</h2>
 </div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
-	
 	new Vue({
 		el: '#app',
 		data: {
 			x: 0,
-			y: 0
+			y: 0,
+			name: 'Vlad',
+			url: 'http://google.com',
+			counter: 0,
+			inputValue: ' '
 		},
 		methods: {
+			sayHello: function() {
+				return 'My name is ' + this.name
+			},
 			handleMouse: function(event) {
 				this.x = event.clientX
 				this.y = event.clientY
+			},
+			add1: function() {
+				this.counter++;
+			},
+			count: function() {
+				this.counter--;
+			},
+			redHover: function(event) {
+				event.target.style.color = 'red'
+			},
+			addValue: function(event) {
+				alert(event.target.value)
 			}
 		}
 		
