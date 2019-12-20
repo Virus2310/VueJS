@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style type="text/css">
+		.circle{
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			border: 1px solid red;
+			display: block;
+			margin: 50px;
+		}
+
+		.red{background-color: red;}
+		.blue{background-color: blue;}
+		.yellow{background-color: yellow;}
+	</style>
+</head>
+<body>
+
+	<div id="app">	
+		
+		<h2 v-if='isVisible'>
+			Visible
+		</h2>
+		<h2 v-else>
+			Not Visible
+		</h2>
+		<button @click='isVisible = !isVisible'>
+			Toogle
+		</button>
+
+		-----
+		-----
+		<div 
+			class="circle"
+			@click='isActive = !isActive'
+			:class='getCssClasses'>
+		</div>
+		<div class="circle" :class='color'></div>
+		<input type="text" v-model='color'>
+		---
+		---
+
+		<template v-if='status == 1'>
+			<h1>111</h1>
+			<p>asdfa</p>
+		</template>
+		<template v-else>
+			<h1>2222</h1>
+			<p>asf</p>
+		</template>
+
+		---
+		---
+		<button @click='count'>Рахунок: {{counter}}</button>
+
+
+		---
+		---
+		<ul>
+			<li v-for='(person, index) in people'>
+			{{index + 1}}	{{person}}
+			</li>
+		</ul>
+		-----
+		-----
+		
+	
+	</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+	
+	new Vue({
+		el: '#app',
+		data: {
+			isVisible: true,
+			isActive: false,
+			color: '',
+			status: 1,
+			counter: 0,
+			people: [
+				{name: 'Vlad'},
+				{name: 'Max'},
+				{name: 'Masha'},
+
+			]
+
+		},
+		computed: {
+			getCssClasses: function() {
+				return {
+					'red': this.isActive,
+					'blue': !this.isActive
+				}
+			}
+		},
+		created: function() {
+			this.counter = 3
+		},
+		methods: {
+			count() {
+				this.counter += 3;
+			}
+		}
+	})
+</script>
+	
+</body>
+</html>

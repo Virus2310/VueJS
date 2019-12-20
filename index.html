@@ -24,7 +24,7 @@
 	<pre>{{ $data | json }}</pre>
 
 	<h1>
-		<a v-bind:href="url">Google</a>
+		<a :href="url">Google</a>
 	</h1>
 
 	<h1>Counter: {{counter}}</h1>
@@ -35,10 +35,11 @@
 
 	<h2>
 		<input type="text" @keyup.enter='addValue'>
+		Click enter
 	</h2>
 
 	<h2>
-		<input type="text" @input= 'inputValue = $event.target.value'>
+		<input type="text" v-model.lazy='inputValue'>
 		{{inputValue}}
 	</h2>
 </div>
@@ -54,7 +55,7 @@
 			name: 'Vlad',
 			url: 'http://google.com',
 			counter: 0,
-			inputValue: ' '
+			inputValue: 'asd'
 		},
 		methods: {
 			sayHello: function() {
