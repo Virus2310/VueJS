@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    
+    <style>
+        .large {
+            font-size: 30px;
+        }
+
+        .border {
+            border: 10px solid red;
+        }
+    </style>
+    <body>
+        
+        <div id="app">
+
+            <button :class="{'large': fontSize, 'border': border}" :style="styles">{{title}}</button>
+            <ul>
+                <li>
+                    <input  type="checkbox" v-model='fontSize'>
+                    <label for="">FontSize</label>
+                </li>
+                <li>
+                    <input type="checkbox" v-model='border'>
+                    <label for="">Border</label>
+                </li>
+                <li>
+                    <input type="input" v-model='bgColor'>
+                    <label for="">bgColor</label>
+                </li>
+                <li>
+                    <input type="range" v-model='range'>
+                    <label for="">Range</label>
+                </li>
+
+            </ul>
+
+        </div>
+        
+
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        
+        
+        <script>
+            new Vue({
+                el:'#app',
+                data: {
+                    title: 'Test Button',
+                    fontSize: false,
+                    border: false,
+                    bgColor: 'pink',
+                    range: 20
+                },
+                computed: {
+                    styles() {
+                        return {
+                            'background': this.bgColor,
+                            'margin-left': this.range + '%'
+                        }
+                    }
+                }
+            })
+        </script>
+        
+        <script src="" async defer></script>
+    </body>
+</html>

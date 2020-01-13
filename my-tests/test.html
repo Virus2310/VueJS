@@ -15,8 +15,40 @@
 	<button v-on:click='riseCounter(10, "Збільшено на 10" , $event)'>Збільшити на 10</button>
 	<p>Ви натиснули: {{ num}}</p>
 	<p> {{ counter > 25 && counter < 100 ? 'More 25 and less 100' :  counter }}</p>
+	
 	<hr>
 
+	<h2 v-if="char === 'a'">A</h2>
+	<h2 v-else-if="char === 'e'">B</h2>
+	<h2 v-else-if="char === 'c'">C</h2>
+	<h2 v-else>Not M</h2>
+
+	<input type="text" v-model='char'>
+
+	<hr>
+	
+	<template v-if='isVisible'>
+		<h2>I am title</h2>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, maxime.</p>
+	</template>
+	
+	<template v-else>
+		<h2 style="color: red;">I am title</h2>
+		<p style="color: red;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, maxime.</p>
+	</template>
+
+	<hr>
+
+	<form>
+		<span>
+			{{count}} / 30
+		</span>
+
+		<textarea v-model='textValue'></textarea>
+
+		<button v-if='count <= 30'>Send</button>
+	</form>
+	
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -25,9 +57,22 @@
 	new Vue({
 		el: '#app',
 		data: {
+			isVisible: false,
 			counter: 0,
 			title: 'Рахунок',
-			num: 0
+			num: 0,
+			char: 'a',
+			textValue: ''
+		},
+		computed: {
+			count: function() {
+				return	this.textValue.length
+			} 
+		},
+		watch: {
+			textValue: function(value) {
+				console.log(value);
+			}
 		},
 		methods: {
 			riseCounter: function(num, str, event) {
