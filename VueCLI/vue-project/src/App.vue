@@ -7,7 +7,7 @@
   		:carName='carName'
   		:carYear='carYear'
 		
-		:changeFunc='changeNameToAudi'
+		  :changeFunc='changeNameToAudi'
   		@nameChanged='carName = $event'>
 
   		</app-car>
@@ -32,7 +32,7 @@ export default {
     	}
     },
     components: {
-    	appCar: Car 
+    	appCar: Car  
     }
 }
 
